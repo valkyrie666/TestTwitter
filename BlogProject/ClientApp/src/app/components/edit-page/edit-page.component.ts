@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
 import { BlogPostService } from '../../services/blog-post.service';
 import { Post } from '../../shared/interfaces';
 import { environment } from '../../../environments/environment';
@@ -43,6 +42,5 @@ export class EditPageComponent implements OnInit {
       }).subscribe(() => {
         this.router.navigate(['/']);
       })
-
   }
 }

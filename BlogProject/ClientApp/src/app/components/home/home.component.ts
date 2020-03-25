@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, Output } from '@angular/core';
-import { Post, User } from '../../shared/interfaces';
+import { Post } from '../../shared/interfaces';
 import { BlogPostService } from '../../services/blog-post.service';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';

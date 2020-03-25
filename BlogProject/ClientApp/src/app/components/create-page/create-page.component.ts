@@ -6,6 +6,7 @@ import { AlertService } from "../../shared/services/alert.service";
 import { UserService } from "../../services/user.service";
 import { AuthService } from "../../services/auth.service";
 import { environment } from "../../../environments/environment";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-create-page',
@@ -14,11 +15,16 @@ import { environment } from "../../../environments/environment";
   providers: [AlertService, UserService]
 })
 export class CreatePageComponent implements OnInit {
-  constructor(private service: AuthService, private http: HttpClient, private alertService: AlertService) { }
+  constructor(
+    private authService: AuthService,
+    private http: HttpClient,
+    private alertService: AlertService,
+    private router: Router) { }
+
   public form: FormGroup;
 
   ngOnInit() {
-    var user = this.service.getFromLocalStorage();
+    var user = this.authService.getFromLocalStorage();
     this.form = new FormGroup({
       title: new FormControl(null, Validators.required),
       author: new FormControl(user.username, Validators.required),
@@ -43,5 +49,6 @@ export class CreatePageComponent implements OnInit {
         this.form.reset();
         this.alertService.success('Post created');
     });
+    this.router.navigate(['/']);
   }
 }
