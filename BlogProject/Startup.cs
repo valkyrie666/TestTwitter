@@ -44,7 +44,6 @@ namespace BlogProject
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
-            // configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
 
@@ -64,7 +63,6 @@ namespace BlogProject
                             var user = userService.GetById(userId);
                             if (user == null)
                             {
-                                // return unauthorized if user no longer exists
                                 context.Fail("Unauthorized");
                             }
                             return Task.CompletedTask;
@@ -137,8 +135,6 @@ namespace BlogProject
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
-            
-            // app.UseMvc();
         }
     }
 }

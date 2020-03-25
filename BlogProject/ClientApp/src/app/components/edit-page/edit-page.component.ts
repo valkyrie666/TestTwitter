@@ -3,23 +3,21 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { BlogPostService } from '../../services/blog-post.service';
 import { Post } from '../../shared/interfaces';
-import { environment } from '../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'edit-component',
   templateUrl: './edit-page.component.html',
-  providers: [BlogPostService]
+  styleUrls: ['./edit-page.component.scss']
 })
 export class EditPageComponent implements OnInit {
   form: FormGroup;
   post: Post;
 
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute, private service: BlogPostService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private service: BlogPostService) { }
 
   ngOnInit() {
-    const v = this.route.snapshot.params.id;
-    this.http.get<Post>(`${environment.serverUrl}post/${v}`).subscribe(result => {
+    const id = this.route.snapshot.params.id;
+    this.service.getById(id).subscribe(result => {
       this.post = result;
       console.log(this.post);
       this.form = new FormGroup({
@@ -41,6 +39,6 @@ export class EditPageComponent implements OnInit {
         title: this.form.value.title
       }).subscribe(() => {
         this.router.navigate(['/']);
-      })
+      });
   }
 }

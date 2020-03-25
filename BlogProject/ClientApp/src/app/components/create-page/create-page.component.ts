@@ -7,18 +7,17 @@ import { UserService } from "../../services/user.service";
 import { AuthService } from "../../services/auth.service";
 import { environment } from "../../../environments/environment";
 import { Router } from "@angular/router";
+import { BlogPostService } from "../../services/blog-post.service";
 
 @Component({
   selector: 'app-create-page',
   templateUrl: './create-page.component.html',
-  styleUrls: ['./create-page.component.scss'],
-  providers: [AlertService, UserService]
+  styleUrls: ['./create-page.component.scss']
 })
 export class CreatePageComponent implements OnInit {
   constructor(
     private authService: AuthService,
-    private http: HttpClient,
-    private alertService: AlertService,
+    private postService: BlogPostService,
     private router: Router) { }
 
   public form: FormGroup;
@@ -45,10 +44,10 @@ export class CreatePageComponent implements OnInit {
       rating: 0
     };
 
-    this.http.post(`${environment.serverUrl}post/create`, post).subscribe(() => {
+    this.postService.create(post).subscribe(() => {
         this.form.reset();
-        this.alertService.success('Post created');
     });
+
     this.router.navigate(['/']);
   }
 }

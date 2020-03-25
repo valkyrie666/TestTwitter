@@ -18,6 +18,12 @@ namespace BlogProject.Controllers
             _postRepository = postRepository;
         }
 
+        [HttpGet]
+        public IEnumerable<Post> Get()
+        {
+            return _postRepository.GetPosts.ToArray();
+        }
+
         [HttpGet("author/{username}")]
         public IEnumerable<Post> GetByAuthor(string username)
         {

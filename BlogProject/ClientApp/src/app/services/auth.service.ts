@@ -34,16 +34,6 @@ export class AuthService {
     return this.http.post(`${environment.serverUrl}auth/register`, user);
   }
 
-  getById(id: number): Observable<User> {
-    var result = this.http.get<User>(`${environment.serverUrl}auth/user/${id}`);
-    return result;
-  }
-
-  getByUsername(username: string): Observable<User> {
-    var result = this.http.get<User>(`${environment.serverUrl}auth/user/username/${username}`);
-    return result;
-  }
-
   isAuthenticated(): boolean {
     if (localStorage.currentUser === undefined) {
       return false;

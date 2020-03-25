@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Observable } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  // styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
@@ -18,10 +16,9 @@ export class LoginComponent implements OnInit {
   baseUrl: string = environment.serverUrl;
   error = '';
   loading = false;
-
-  constructor(private service: AuthService, private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
-
   returnUrl: string;
+
+  constructor(private service: AuthService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -44,7 +41,7 @@ export class LoginComponent implements OnInit {
     const password = this.form.value.password;
 
     this.service.login(username, password).pipe(first()).subscribe(
-      data => {
+      () => {
         this.router.navigate([this.returnUrl]);
       },
       error => {

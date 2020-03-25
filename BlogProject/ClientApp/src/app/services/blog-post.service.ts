@@ -10,7 +10,7 @@ export class BlogPostService {
   constructor(private http: HttpClient) { }
 
   get() {
-    return this.http.get<Post[]>(`${environment.serverUrl}home`);
+    return this.http.get<Post[]>(`${environment.serverUrl}post`);
   }
 
   getByAuthor(username: string) {
@@ -18,23 +18,17 @@ export class BlogPostService {
   }
 
   getById(id: string): Observable<Post> {
-    return this.http.get<Post>(`${environment.serverUrl}post/${id}/edit`)
+    return this.http.get<Post>(`${environment.serverUrl}post/${id}`)
       .pipe(map((post: Post) => {
         return {
           ...post,
-          id,
-          // date: new Date(post.date)
+          id
         };
       }));
   }
 
-  create(post: Post): Observable<Post> {
-    return this.http.post(`${environment.serverUrl}post/create`, post)
-      .pipe(map(() => {
-        return {
-          ...post,
-        };
-      }));
+  create(post: Post) {
+    return this.http.post(`${environment.serverUrl}post/create`, post);
   }
 
   update(post: Post) {

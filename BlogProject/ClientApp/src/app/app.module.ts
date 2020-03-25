@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,13 +14,12 @@ import { CreatePageComponent } from './components/create-page/create-page.compon
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { AlertComponent } from './shared/components/alert/alert.component';
-import { AuthGuard } from './services/auth/auth.guard';
 import { AlertService } from './shared/services/alert.service';
 import { AuthService } from './services/auth.service';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { CreateButtonComponent } from './shared/components/create-button/create-button.component';
-import { SearchPipe } from './pipes/search.pipe';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -35,8 +33,7 @@ import { SearchPipe } from './pipes/search.pipe';
     RegistrationComponent,
     AlertComponent,
     UserProfileComponent,
-    CreateButtonComponent,
-    SearchPipe
+    CreateButtonComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

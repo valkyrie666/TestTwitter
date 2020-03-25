@@ -44,6 +44,29 @@ html, body {
   position: relative;
 }
 
+.btn-layer {
+  border-radius: 0;
+  position: absolute;
+  left: 0;
+  bottom: 15px;
+  width: 20%;
+  text-align: end;
+}
+
+.card {
+  border-radius: 0;
+  margin-bottom: 10px;
+}
+
+.blog-post-link {
+  text-transform: uppercase;
+  color: #ff0085;
+}
+
+.blog-post-link:hover {
+  text-decoration: none;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 8px;
@@ -62,8 +85,6 @@ html, body {
 }
 
   /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #007bff;
-  }
-
-  /* mozilla */
+::-webkit-scrollbar-thumb:hover {
+  background: #007bff;
+}

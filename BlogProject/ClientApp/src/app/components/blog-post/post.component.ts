@@ -1,10 +1,7 @@
-import { Component, Inject, OnInit, Input } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { ActivatedRoute } from "@angular/router";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { Component, OnInit } from "@angular/core";
 import { Post } from "../../shared/interfaces";
-import { environment } from "../../../environments/environment";
+import { BlogPostService } from "../../services/blog-post.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-post',
@@ -14,13 +11,13 @@ import { environment } from "../../../environments/environment";
 export class PostComponent implements OnInit {
   postElement: Post;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {
+  constructor(private postService: BlogPostService, private route: ActivatedRoute) {
    
   }
 
   ngOnInit() {
-    const v = this.route.snapshot.params.id;
-    this.http.get<Post>(`${environment.serverUrl}post/${v}`).subscribe(result => {
+    const id = this.route.snapshot.params.id;
+    this.postService.getById(id).subscribe(result => {
       this.postElement = result;
     }, error => console.error(error));
   }

@@ -180,12 +180,6 @@ C:\Users\kseni\source\repos\BlogProject\BlogProject\bin\Debug\netcoreapp3.1\runt
 C:\Users\kseni\source\repos\BlogProject\BlogProject\obj\Debug\netcoreapp3.1\BlogProject.TagHelpers.input.cache
 C:\Users\kseni\source\repos\BlogProject\BlogProject\obj\Debug\netcoreapp3.1\BlogProject.TagHelpers.output.cache
 C:\Users\kseni\source\repos\BlogProject\BlogProject\obj\Debug\netcoreapp3.1\BlogProject.RazorCoreGenerate.cache
-C:\Users\kseni\source\repos\BlogProject\BlogProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
-C:\Users\kseni\source\repos\BlogProject\BlogProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
-C:\Users\kseni\source\repos\BlogProject\BlogProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
-C:\Users\kseni\source\repos\BlogProject\BlogProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
-C:\Users\kseni\source\repos\BlogProject\BlogProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
-C:\Users\kseni\source\repos\BlogProject\BlogProject\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\kseni\source\repos\BlogProject\BlogProject\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
 C:\Users\kseni\source\repos\BlogProject\BlogProject\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout.cshtml.g.cs
 C:\Users\kseni\source\repos\BlogProject\BlogProject\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_LoginPartial.cshtml.g.cs

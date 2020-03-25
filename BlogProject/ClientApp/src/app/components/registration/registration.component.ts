@@ -1,13 +1,13 @@
 import { Component } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
 import { User } from "../../shared/interfaces";
 
 @Component({
   selector: 'app-register',
-  templateUrl: './registration.component.html'
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent {
 
@@ -44,18 +44,15 @@ export class RegistrationComponent {
       firstName: this.form.value.firstName,
       lastName: this.form.value.lastName,
       username: this.form.value.username,
-      password: this.form.value.password
-      
+      password: this.form.value.password 
     };
+
     this.service.create(user)
       .subscribe(
-        data => {
-          // this.alertService.success('Registration successful', true);
+        () => {
           this.router.navigate(['login']);
         },
         error => {
-          // this.alertService.error(error);
-          // this.loading = false;
           console.log('Error caught!\n', error);
         });
   }

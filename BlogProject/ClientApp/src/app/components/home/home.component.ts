@@ -1,31 +1,26 @@
-import { Component, Inject, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Post } from '../../shared/interfaces';
 import { BlogPostService } from '../../services/blog-post.service';
-import { AuthService } from '../../services/auth.service';
-import { UserService } from '../../services/user.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  providers: [BlogPostService]
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   public posts: Post[] = [];
   searchStr = '';
   form: FormGroup;
 
-  constructor(private blogPostsService: BlogPostService, private userService: UserService, private authService: AuthService) {
-    
-  }
+  constructor(private postService: BlogPostService) {}
 
   ngOnInit() {
     this.form = new FormGroup({
       searchValue: new FormControl(null, [])
     });
 
-    this.blogPostsService.get().subscribe(result => {
+    this.postService.get().subscribe(result => {
       this.posts = result;
     }, error => console.error(error));
   }
@@ -33,18 +28,18 @@ export class HomeComponent implements OnInit {
   search() {
     const searchStr: string = this.form.value.searchValue;
     if (searchStr.length > 0) {
-      this.blogPostsService.search(searchStr).subscribe(result => {
+      this.postService.search(searchStr).subscribe(result => {
         this.posts = result;
       });
     } else {
-      this.blogPostsService.get().subscribe(result => {
+      this.postService.get().subscribe(result => {
         this.posts = result;
       }, error => console.error(error));
     }
   }
 
   remove(id: string) {
-    this.blogPostsService.remove(id).subscribe(() => {
+    this.postService.remove(id).subscribe(() => {
       this.posts = this.posts.filter(p => p.id !== id);
     });
   }

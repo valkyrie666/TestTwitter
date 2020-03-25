@@ -7,8 +7,8 @@ import { CreatePageComponent } from "./components/create-page/create-page.compon
 import { EditPageComponent } from "./components/edit-page/edit-page.component";
 import { LoginComponent } from "./components/login/login.component";
 import { RegistrationComponent } from "./components/registration/registration.component";
-import { AuthGuard } from "./services/auth/auth.guard";
 import { UserProfileComponent } from "./components/user-profile/user-profile.component";
+import { AuthGuard } from "./guards/auth.guard";
 
 const routes: Routes = [
   {

@@ -1,7 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { environment } from "../../../environments/environment";
-import { HttpClient } from "@angular/common/http";
 import { Post, User } from "../../shared/interfaces";
 import { BlogPostService } from "../../services/blog-post.service";
 import { UserService } from "../../services/user.service";

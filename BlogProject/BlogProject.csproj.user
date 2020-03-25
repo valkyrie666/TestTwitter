@@ -30,7 +30,7 @@
     </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Update="ClientApp\src\app\services\auth\auth.guard.ts">
+    <TypeScriptCompile Update="ClientApp\src\app\guards\auth.guard.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
   </ItemGroup>
