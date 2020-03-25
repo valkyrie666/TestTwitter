@@ -13,7 +13,6 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
   public posts: Post[] = [];
-  public user: User;
   searchStr = '';
   form: FormGroup;
 
@@ -22,7 +21,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.user = this.authService.getFromLocalStorage();
     this.form = new FormGroup({
       searchValue: new FormControl(null, [])
     });
