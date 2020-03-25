@@ -1,0 +1,13 @@
+.btn-fixed {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 1;
+}
+
+.btn-rounded {
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    font-size: 1.5rem;
+}

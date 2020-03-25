@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-3">
+    <div class="card">
+      <div class="card-header">
+        User's Profile
+      </div>
+      <div class="card-body">
+        {{user.firstName}} {{user.lastName}}
+      </div>
+    </div>
+  </div>
+  <div class="col-9">
+    <div class="cards" *ngIf="posts.length > 0; else nothing">
+      <div class="card" *ngFor="let post of posts">
+        <div class="card-header bg-dark text-white">
+          <div style="float: left;">
+            <a class="blog-post-link" routerLink="/post/{{post.id}}">{{ post.title }}</a> by <a>{{ post.author }}</a>
+          </div>
+          <div style="float: right;">
+            {{ post.date | date:'dd.MM.yyyy'}}
+          </div>
+        </div>
+        <div class="card-body text-left">
+          <quill-view-html [content]="post.text"></quill-view-html>
+          <br />
+          <button class="btn btn-info btn-layer" routerLink="/post/{{post.id}}">See more</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-create-button></app-create-button>
+
+<ng-template #nothing>
+  <div class="jumbotron">
+    <h3>This user hasn't posted anything yet</h3>
+  </div>
+</ng-template>
