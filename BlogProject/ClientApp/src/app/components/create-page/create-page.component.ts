@@ -1,11 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { HttpClient } from "@angular/common/http";
 import { Post } from "../../shared/interfaces";
-import { AlertService } from "../../shared/services/alert.service";
-import { UserService } from "../../services/user.service";
-import { AuthService } from "../../services/auth.service";
-import { environment } from "../../../environments/environment";
 import { Router } from "@angular/router";
 import { BlogPostService } from "../../services/blog-post.service";
 
@@ -16,14 +11,13 @@ import { BlogPostService } from "../../services/blog-post.service";
 })
 export class CreatePageComponent implements OnInit {
   constructor(
-    private authService: AuthService,
     private postService: BlogPostService,
     private router: Router) { }
 
   public form: FormGroup;
 
   ngOnInit() {
-    var user = this.authService.getFromLocalStorage();
+    var user = JSON.parse(localStorage.currentUser);
     this.form = new FormGroup({
       title: new FormControl(null, Validators.required),
       author: new FormControl(user.username, Validators.required),

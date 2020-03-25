@@ -40,9 +40,4 @@ export class AuthService {
     }
     return true;
   }
-
-  getFromLocalStorage() {
-    var user = JSON.parse(localStorage.currentUser);
-    return user;
-  }
 }
