@@ -14,14 +14,9 @@ export class MainLayoutComponent implements OnInit {
   constructor(
     private router: Router,
     public auth: AuthService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
-  }
-
-  toProfile(username: string) {
-    this.router.navigate(['/user', username]);
   }
 
   logout(event: Event) {
