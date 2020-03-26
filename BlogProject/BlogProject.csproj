@@ -49,6 +49,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\services\comment.service.ts" />
     <None Remove="ClientApp\src\app\services\user.service.ts" />
     <None Remove="ClientApp\src\app\shared\components\create-button\create-button.component.ts" />
     <None Remove="ClientApp\src\app\components\login\login.component.ts" />
@@ -63,6 +64,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\services\comment.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\user.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\components\create-button\create-button.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\login\login.component.ts" />
