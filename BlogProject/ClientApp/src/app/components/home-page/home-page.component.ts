@@ -17,7 +17,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   searchPostsSub: Subscription;
   removePostSub: Subscription;
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService) { }
 
   ngOnInit() {
     this.form = new FormGroup({
