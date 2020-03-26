@@ -5,11 +5,11 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-home-page',
+  templateUrl: './home-page.component.html',
+  styleUrls: ['./home-page.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomePageComponent implements OnInit, OnDestroy {
   public posts: Post[] = [];
   searchStr = '';
   form: FormGroup;

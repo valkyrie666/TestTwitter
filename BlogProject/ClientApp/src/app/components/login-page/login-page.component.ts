@@ -7,11 +7,11 @@ import { first } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-login-page',
+  templateUrl: './login-page.component.html',
+  styleUrls: ['./login-page.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginPageComponent implements OnInit, OnDestroy {
   form: FormGroup;
   submitted = false;
   baseUrl: string = environment.serverUrl;

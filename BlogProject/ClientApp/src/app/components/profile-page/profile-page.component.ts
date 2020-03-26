@@ -6,11 +6,11 @@ import { UserService } from "../../services/user.service";
 import { Subscription } from "rxjs";
 
 @Component({
-  selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
+  selector: 'app-profile-page',
+  templateUrl: './profile-page.component.html',
+  styleUrls: ['./profile-page.component.scss']
 })
-export class UserProfileComponent implements OnInit, OnDestroy {
+export class ProfilePageComponent implements OnInit, OnDestroy {
 
   user: User;
   posts: Post[] = [];

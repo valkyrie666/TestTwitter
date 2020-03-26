@@ -6,11 +6,11 @@ import { User } from "../../shared/interfaces";
 import { Subscription } from "rxjs";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  selector: 'app-registration-page',
+  templateUrl: './registration-page.component.html',
+  styleUrls: ['./registration-page.component.scss']
 })
-export class RegistrationComponent implements OnInit, OnDestroy {
+export class RegistrationPageComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
   submitted = false;

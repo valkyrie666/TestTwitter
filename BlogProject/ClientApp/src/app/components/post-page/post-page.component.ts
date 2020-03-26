@@ -5,11 +5,11 @@ import { ActivatedRoute } from "@angular/router";
 import { Subscription } from "rxjs";
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+  selector: 'app-post-page',
+  templateUrl: './post-page.component.html',
+  styleUrls: ['./post-page.component.scss']
 })
-export class PostComponent implements OnInit, OnDestroy {
+export class PostPageComponent implements OnInit, OnDestroy {
   postElement: Post;
   getPostSub: Subscription;
 
