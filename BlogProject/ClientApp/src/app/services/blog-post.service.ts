@@ -6,10 +6,10 @@ import { environment } from "../../environments/environment";
 import { map } from "rxjs/operators";
 
 @Injectable({ providedIn: 'root' })
-export class BlogPostService {
+export class PostService {
   constructor(private http: HttpClient) { }
 
-  get() {
+  getPosts() {
     return this.http.get<Post[]>(`${environment.serverUrl}post`);
   }
 

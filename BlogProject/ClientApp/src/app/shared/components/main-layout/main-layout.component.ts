@@ -1,23 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { UserService } from '../../../services/user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
-  styleUrls: ['./main-layout.component.scss'],
-  providers: [AuthService, UserService]
+  styleUrls: ['./main-layout.component.scss']
 })
-export class MainLayoutComponent implements OnInit {
+export class MainLayoutComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
     public auth: AuthService
   ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
+  ngOnDestroy() {}
 
   logout(event: Event) {
     event.preventDefault();
