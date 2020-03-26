@@ -5,14 +5,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './components/home-page/home.component';
 import { SharedModule } from './shared/shared.module';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { EditPageComponent } from './components/edit-page/edit-page.component';
-import { PostComponent } from './components/blog-post/post.component';
+import { PostComponent } from './components/post-page/post.component';
 import { CreatePageComponent } from './components/create-page/create-page.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegistrationComponent } from './components/registration/registration.component';
+import { LoginComponent } from './components/login-page/login.component';
+import { RegistrationComponent } from './components/registration-page/registration.component';
 import { AlertComponent } from './shared/components/alert/alert.component';
 import { AlertService } from './shared/services/alert.service';
 import { AuthService } from './services/auth.service';

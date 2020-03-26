@@ -1,14 +1,14 @@
 import { Routes, RouterModule, PreloadAllModules } from "@angular/router";
 import { NgModule } from "@angular/core";
 import { MainLayoutComponent } from "./shared/components/main-layout/main-layout.component";
-import { HomeComponent } from "./components/home/home.component";
-import { PostComponent } from "./components/blog-post/post.component";
+import { HomeComponent } from "./components/home-page/home.component";
 import { CreatePageComponent } from "./components/create-page/create-page.component";
 import { EditPageComponent } from "./components/edit-page/edit-page.component";
-import { LoginComponent } from "./components/login/login.component";
-import { RegistrationComponent } from "./components/registration/registration.component";
 import { UserProfileComponent } from "./components/user-profile/user-profile.component";
 import { AuthGuard } from "./guards/auth.guard";
+import { PostComponent } from "./components/post-page/post.component";
+import { LoginComponent } from "./components/login-page/login.component";
+import { RegistrationComponent } from "./components/registration-page/registration.component";
 
 const routes: Routes = [
   {
