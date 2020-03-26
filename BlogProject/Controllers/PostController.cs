@@ -1,9 +1,7 @@
 ﻿using BlogProject.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlogProject.Controllers
 {
@@ -12,13 +10,10 @@ namespace BlogProject.Controllers
     public class PostController
     {
         private readonly IPostRepository _postRepository;
-        private readonly ICommentRepository _commentRepository;
 
-        public PostController(IPostRepository postRepository, ICommentRepository commentRepository)
+        public PostController(IPostRepository postRepository)
         {
             _postRepository = postRepository;
-            _commentRepository = commentRepository;
-
         }
 
         [HttpGet]
@@ -39,7 +34,7 @@ namespace BlogProject.Controllers
             return _postRepository.SearchPosts(searchStr);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("blog/{id}")]
         public Post GetById(string id)
         {
             return _postRepository.GetById(id);
@@ -61,12 +56,6 @@ namespace BlogProject.Controllers
         public void UpdatePost(Post post)
         {
             _postRepository.EditPost(post);
-        }
-
-        [HttpGet("{id}/comments")]
-        public IEnumerable<Comment> GetComments(int postId)
-        {
-            return _commentRepository.GetPostComments(postId);
         }
     }
 }
