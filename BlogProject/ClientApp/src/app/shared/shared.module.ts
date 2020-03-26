@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { QuillModule } from 'ngx-quill';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateButtonComponent } from './components/create-button/create-button.component';
 
 @NgModule({
   imports: [
@@ -10,16 +11,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    QuillModule.forRoot(),
+    QuillModule.forRoot()
   ],
   exports: [
     HttpClientModule,
     QuillModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CreateButtonComponent
   ],
-  declarations: []
+  declarations: [
+    CreateButtonComponent
+  ]
 })
 export class SharedModule {
 
