@@ -5,35 +5,33 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './components/home-page/home.component';
 import { SharedModule } from './shared/shared.module';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { EditPageComponent } from './components/edit-page/edit-page.component';
-import { PostComponent } from './components/post-page/post.component';
 import { CreatePageComponent } from './components/create-page/create-page.component';
-import { LoginComponent } from './components/login-page/login.component';
-import { RegistrationComponent } from './components/registration-page/registration.component';
 import { AlertComponent } from './shared/components/alert/alert.component';
 import { AlertService } from './shared/services/alert.service';
 import { AuthService } from './services/auth.service';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { CreateButtonComponent } from './shared/components/create-button/create-button.component';
 import { AuthGuard } from './guards/auth.guard';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { PostPageComponent } from './components/post-page/post-page.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainLayoutComponent,
-    HomeComponent,
+    HomePageComponent,
     EditPageComponent,
-    PostComponent,
+    PostPageComponent,
     CreatePageComponent,
-    LoginComponent,
-    RegistrationComponent,
+    LoginPageComponent,
+    RegistrationPageComponent,
     AlertComponent,
-    UserProfileComponent,
-    CreateButtonComponent
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
