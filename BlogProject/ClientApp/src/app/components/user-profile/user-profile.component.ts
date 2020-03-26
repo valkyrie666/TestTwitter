@@ -1,38 +1,50 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Post, User } from "../../shared/interfaces";
-import { BlogPostService } from "../../services/blog-post.service";
+import { PostService } from "../../services/blog-post.service";
 import { UserService } from "../../services/user.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss'],
-  providers: [UserService]
+  styleUrls: ['./user-profile.component.scss']
 })
-export class UserProfileComponent implements OnInit {
-  constructor(
-    private userService: UserService,
-    private postService: BlogPostService,
-    private route: ActivatedRoute
-  ) { }
+export class UserProfileComponent implements OnInit, OnDestroy {
 
   user: User;
   posts: Post[] = [];
+  userSub: Subscription;
+  getUserPostsSub: Subscription;
+
+  constructor(
+    private userService: UserService,
+    private postService: PostService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     const username = this.route.snapshot.params.username;
-    this.userService.getByUsername(username).subscribe(
+    this.userSub = this.userService.getByUsername(username).subscribe(
       result => {
         this.user = result;
       }, error => console.error(error)
     );
 
-    this.postService.getByAuthor(username).subscribe(
+    this.getUserPostsSub = this.postService.getByAuthor(username).subscribe(
       result => {
         this.posts = result;
         console.log(this.posts);
       }, error => console.error(error)
     );
+  }
+
+  ngOnDestroy() {
+    if (this.userSub) {
+      this.userSub.unsubscribe();
+    }
+    if (this.getUserPostsSub) {
+      this.getUserPostsSub.unsubscribe();
+    }
   }
 }

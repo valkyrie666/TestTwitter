@@ -1,23 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { BlogPostService } from '../../services/blog-post.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { PostService } from '../../services/blog-post.service';
 import { Post } from '../../shared/interfaces';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'edit-component',
   templateUrl: './edit-page.component.html',
   styleUrls: ['./edit-page.component.scss']
 })
-export class EditPageComponent implements OnInit {
+export class EditPageComponent implements OnInit, OnDestroy {
   form: FormGroup;
   post: Post;
+  getPostSub: Subscription;
+  updatePostSub: Subscription;
 
-  constructor(private router: Router, private route: ActivatedRoute, private service: BlogPostService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private service: PostService) { }
 
   ngOnInit() {
     const id = this.route.snapshot.params.id;
-    this.service.getById(id).subscribe(result => {
+    this.getPostSub = this.service.getById(id).subscribe(result => {
       this.post = result;
       console.log(this.post);
       this.form = new FormGroup({
@@ -27,12 +30,21 @@ export class EditPageComponent implements OnInit {
     }, error => console.error(error));
   }
 
+  ngOnDestroy() {
+    if (this.getPostSub) {
+      this.getPostSub.unsubscribe();
+    }
+    if (this.updatePostSub) {
+      this.updatePostSub.unsubscribe();
+    }
+  }
+
   submit() {
     if (this.form.invalid) {
       return
     }
 
-    this.service.update(
+    this.updatePostSub = this.service.update(
       {
         ...this.post,
         text: this.form.value.text,

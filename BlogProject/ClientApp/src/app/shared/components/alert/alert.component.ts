@@ -11,12 +11,12 @@ import { AlertService } from '../../services/alert.service';
 export class AlertComponent implements OnInit, OnDestroy {
   public text: string;
   public type = 'info';
-  aSub: Subscription;
+  alertSub: Subscription;
 
   constructor(private alertService: AlertService) { }
 
   ngOnInit() {
-    this.aSub = this.alertService.alert$.subscribe(alert => {
+    this.alertSub = this.alertService.alert$.subscribe(alert => {
       this.text = alert.text;
       this.type = alert.type;
 
@@ -28,8 +28,8 @@ export class AlertComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.aSub) {
-      this.aSub.unsubscribe();
+    if (this.alertSub) {
+      this.alertSub.unsubscribe();
     }
   }
 }

@@ -1,20 +1,23 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Post } from "../../shared/interfaces";
 import { Router } from "@angular/router";
-import { BlogPostService } from "../../services/blog-post.service";
+import { PostService } from "../../services/blog-post.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: 'app-create-page',
   templateUrl: './create-page.component.html',
   styleUrls: ['./create-page.component.scss']
 })
-export class CreatePageComponent implements OnInit {
-  constructor(
-    private postService: BlogPostService,
-    private router: Router) { }
+export class CreatePageComponent implements OnInit, OnDestroy {
 
-  public form: FormGroup;
+  form: FormGroup;
+  createPostSub: Subscription;
+
+  constructor(
+    private postService: PostService,
+    private router: Router) {}
 
   ngOnInit() {
     var user = JSON.parse(localStorage.currentUser);
@@ -23,6 +26,12 @@ export class CreatePageComponent implements OnInit {
       author: new FormControl(user.username, Validators.required),
       text: new FormControl(null, Validators.required)
     });
+  }
+
+  ngOnDestroy() {
+    if (this.createPostSub) {
+      this.createPostSub.unsubscribe();
+    }
   }
 
   submit() {
@@ -38,7 +47,7 @@ export class CreatePageComponent implements OnInit {
       rating: 0
     };
 
-    this.postService.create(post).subscribe(() => {
+    this.createPostSub = this.postService.create(post).subscribe(() => {
         this.form.reset();
     });
 

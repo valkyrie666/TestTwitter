@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { AuthService } from '../../services/auth.service';
 import { first } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   form: FormGroup;
   submitted = false;
   baseUrl: string = environment.serverUrl;
   error = '';
   loading = false;
   returnUrl: string;
+  loginSub: Subscription;
 
   constructor(private service: AuthService, private router: Router, private route: ActivatedRoute) { }
 
@@ -27,6 +29,12 @@ export class LoginComponent implements OnInit {
     });
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+  }
+
+  ngOnDestroy() {
+    if (this.loginSub) {
+      this.loginSub.unsubscribe();
+    } 
   }
 
   submit() {
@@ -40,7 +48,7 @@ export class LoginComponent implements OnInit {
     const username = this.form.value.username;
     const password = this.form.value.password;
 
-    this.service.login(username, password).pipe(first()).subscribe(
+    this.loginSub = this.service.login(username, password).pipe(first()).subscribe(
       () => {
         this.router.navigate([this.returnUrl]);
       },
