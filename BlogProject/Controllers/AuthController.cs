@@ -19,13 +19,13 @@ namespace BlogProject.Controllers
     [Route("[controller]")]
     public class AuthController : ControllerBase
     {
-        private IUserService _userService;
+        private IUserRepository _userRepository;
         private IMapper _mapper;
         private readonly AppSettings _appSettings;
 
-        public AuthController(IUserService userService, IMapper mapper, IOptions<AppSettings> appSettings)
+        public AuthController(IUserRepository userService, IMapper mapper, IOptions<AppSettings> appSettings)
         {
-            _userService = userService;
+            _userRepository = userService;
             _mapper = mapper;
             _appSettings = appSettings.Value;
         }
@@ -34,7 +34,7 @@ namespace BlogProject.Controllers
         [HttpPost("login")]
         public IActionResult Authenticate([FromBody]UserDto userDto)
         {
-            var user = _userService.Authenticate(userDto.Username, userDto.Password);
+            var user = _userRepository.Authenticate(userDto.Username, userDto.Password);
 
             if (user == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
@@ -53,7 +53,6 @@ namespace BlogProject.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var tokenString = tokenHandler.WriteToken(token);
 
-            // return basic user info (without password) and token to store client side
             return Ok(new
             {
                 Id = user.Id,
@@ -72,7 +71,7 @@ namespace BlogProject.Controllers
 
             try
             {
-                _userService.Create(user, userDto.Password);
+                _userRepository.Create(user, userDto.Password);
                 return Ok();
             }
             catch (AppException ex)
@@ -84,7 +83,7 @@ namespace BlogProject.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var users = _userService.GetAll();
+            var users = _userRepository.GetAll();
             var userDtos = _mapper.Map<IList<UserDto>>(users);
             return Ok(userDtos);
         }
@@ -93,7 +92,7 @@ namespace BlogProject.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var user = _userService.GetById(id);
+            var user = _userRepository.GetById(id);
             var userDto = _mapper.Map<UserDto>(user);
             return Ok(userDto);
         }
@@ -102,7 +101,7 @@ namespace BlogProject.Controllers
         [HttpGet("user/{id}")]
         public UserDto GetUserById(int id)
         {
-            var user = _userService.GetById(id);
+            var user = _userRepository.GetById(id);
             var userDto = _mapper.Map<UserDto>(user);
             return userDto;
         }
@@ -111,7 +110,7 @@ namespace BlogProject.Controllers
         [HttpGet("user/username/{username}")]
         public UserDto GetUserByUsername(string username)
         {
-            var user = _userService.GetByUsername(username);
+            var user = _userRepository.GetByUsername(username);
             var userDto = _mapper.Map<UserDto>(user);
             return userDto;
         }
@@ -124,7 +123,7 @@ namespace BlogProject.Controllers
 
             try
             {
-                _userService.Update(user, userDto.Password);
+                _userRepository.Update(user, userDto.Password);
                 return Ok();
             }
             catch (AppException ex)
@@ -136,7 +135,7 @@ namespace BlogProject.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _userService.Delete(id);
+            _userRepository.Delete(id);
             return Ok();
         }
     }
