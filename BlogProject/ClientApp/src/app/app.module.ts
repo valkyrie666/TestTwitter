@@ -39,7 +39,7 @@ import { RegistrationPageComponent } from './components/registration-page/regist
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    SharedModule,
+    SharedModule
   ],
   providers: [
     AuthGuard,
