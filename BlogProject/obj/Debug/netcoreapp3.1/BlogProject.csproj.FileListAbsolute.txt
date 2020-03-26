@@ -192,4 +192,3 @@ C:\Users\kseni\source\repos\BlogProject\BlogProject\obj\Debug\netcoreapp3.1\Blog
 C:\Users\kseni\source\repos\BlogProject\BlogProject\obj\Debug\netcoreapp3.1\BlogProject.csproj.CopyComplete
 C:\Users\kseni\source\repos\BlogProject\BlogProject\obj\Debug\netcoreapp3.1\BlogProject.dll
 C:\Users\kseni\source\repos\BlogProject\BlogProject\obj\Debug\netcoreapp3.1\BlogProject.pdb
-C:\Users\kseni\source\repos\BlogProject\BlogProject\obj\Debug\netcoreapp3.1\BlogProject.csprojAssemblyReference.cache
