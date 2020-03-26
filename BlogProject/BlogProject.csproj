@@ -49,11 +49,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\app\services\comment.service.ts" />
     <None Remove="ClientApp\src\app\services\user.service.ts" />
     <None Remove="ClientApp\src\app\shared\components\create-button\create-button.component.ts" />
-    <None Remove="ClientApp\src\app\components\login\login.component.ts" />
-    <None Remove="ClientApp\src\app\components\registration\registration.component.ts" />
+    <None Remove="ClientApp\src\app\components\login-page\login.component.ts" />
+    <None Remove="ClientApp\src\app\components\registration-page\registration.component.ts" />
     <None Remove="ClientApp\src\app\components\user-profile\user-profile.component.ts" />
     <None Remove="ClientApp\src\app\jwt.interceptor.ts" />
     <None Remove="ClientApp\src\app\services\auth.service.ts" />
@@ -64,11 +63,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\services\comment.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\user.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\components\create-button\create-button.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\components\login\login.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\components\registration\registration.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\login-page\login.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\registration-page\registration.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\user-profile\user-profile.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\interceptors\jwt.interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\auth.service.ts" />

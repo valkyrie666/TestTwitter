@@ -10,11 +10,6 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
-    <TypeScriptCompile Update="ClientApp\src\app\services\comment.service.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Update="ClientApp\src\app\services\user.service.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -55,12 +50,12 @@
     </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Update="ClientApp\src\app\components\registration\registration.component.ts">
+    <TypeScriptCompile Update="ClientApp\src\app\components\registration-page\registration.component.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Update="ClientApp\src\app\components\login\login.component.ts">
+    <TypeScriptCompile Update="ClientApp\src\app\components\login-page\login.component.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
   </ItemGroup>
