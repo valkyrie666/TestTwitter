@@ -58,7 +58,7 @@ namespace BlogProject
                     {
                         OnTokenValidated = context =>
                         {
-                            var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
+                            var userService = context.HttpContext.RequestServices.GetRequiredService<IUserRepository>();
                             var userId = int.Parse(context.Principal.Identity.Name);
                             var user = userService.GetById(userId);
                             if (user == null)
@@ -80,7 +80,8 @@ namespace BlogProject
                 });
 
             services.AddScoped<IPostRepository, PostRepository>();
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
 
             services.AddControllersWithViews();
             services.AddSpaStaticFiles(configuration =>
