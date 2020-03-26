@@ -12,10 +12,13 @@ namespace BlogProject.Controllers
     public class PostController
     {
         private readonly IPostRepository _postRepository;
+        private readonly ICommentRepository _commentRepository;
 
-        public PostController(IPostRepository postRepository)
+        public PostController(IPostRepository postRepository, ICommentRepository commentRepository)
         {
             _postRepository = postRepository;
+            _commentRepository = commentRepository;
+
         }
 
         [HttpGet]
@@ -58,6 +61,12 @@ namespace BlogProject.Controllers
         public void UpdatePost(Post post)
         {
             _postRepository.EditPost(post);
+        }
+
+        [HttpGet("{id}/comments")]
+        public IEnumerable<Comment> GetComments(int postId)
+        {
+            return _commentRepository.GetPostComments(postId);
         }
     }
 }
