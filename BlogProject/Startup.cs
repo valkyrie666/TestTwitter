@@ -81,7 +81,6 @@ namespace BlogProject
 
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<ICommentRepository, CommentRepository>();
 
             services.AddControllersWithViews();
             services.AddSpaStaticFiles(configuration =>
