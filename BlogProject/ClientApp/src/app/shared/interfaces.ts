@@ -14,12 +14,3 @@ export class User {
   firstName: string;
   lastName: string;
 }
-
-export interface Comment {
-  id?: string;
-  postId: number,
-  title: string;
-  author: string;
-  text: string;
-  date: Date;
-}
