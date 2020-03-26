@@ -18,7 +18,7 @@ export class PostService {
   }
 
   getById(id: string): Observable<Post> {
-    return this.http.get<Post>(`${environment.serverUrl}post/${id}`)
+    return this.http.get<Post>(`${environment.serverUrl}post/blog/${id}`)
       .pipe(map((post: Post) => {
         return {
           ...post,
