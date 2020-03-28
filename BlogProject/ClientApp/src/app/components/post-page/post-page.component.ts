@@ -1,8 +1,12 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Post } from "../../shared/interfaces";
-import { PostService } from "../../services/blog-post.service";
 import { ActivatedRoute } from "@angular/router";
-import { Subscription } from "rxjs";
+import { Subscription, Observable } from "rxjs";
+import { Store, select } from "@ngrx/store";
+
+import { AppState } from "../../ngrx/states/app.state";
+import { selectSelectedPost } from "../../ngrx/selectors/post.selector";
+import { GetPost } from "../../ngrx/actions/post.actions";
+import { Post } from "../../shared/interfaces";
 
 @Component({
   selector: 'app-post-page',
@@ -10,20 +14,23 @@ import { Subscription } from "rxjs";
   styleUrls: ['./post-page.component.scss']
 })
 export class PostPageComponent implements OnInit, OnDestroy {
-  postElement: Post;
   getPostSub: Subscription;
 
-  constructor(private postService: PostService,
-    private route: ActivatedRoute)
-  { }
+  postStream$: Observable<Observable<Post>>;
+  post$: Observable<Post>;
+
+  constructor(
+    private route: ActivatedRoute,
+    private store: Store<AppState>) {
+    this.postStream$ = store.pipe(select(selectSelectedPost));
+  }
 
   ngOnInit() {
     const id: string = this.route.snapshot.params.id;
-    console.log(id);
-
-    this.getPostSub = this.postService.getById(id).subscribe(result => {
-      this.postElement = result;
-    }, error => console.error(error));
+    this.store.dispatch(new GetPost(id));
+    this.getPostSub = this.postStream$.subscribe(postObj => {
+      this.post$ = postObj;
+    });
   }
 
   ngOnDestroy() {

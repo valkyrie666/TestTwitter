@@ -1,6 +1,14 @@
-<h1>{{postElement.title}}</h1>
-<h3>By {{postElement.author}} from {{ postElement.date | date:'dd.MM.yyyy'}}</h3>
-<hr />
+<div class="post" *ngIf="post$ | async as post; else loading">
+  <h1>{{post.title}}</h1>
+  <h3>By {{post.author}} from {{ post.date | date:'dd.MM.yyyy'}}</h3>
+  <hr />
 
-<quill-view-html [content]="postElement.text"></quill-view-html>
-<button class="btn btn-link" routerLink="/">Go Home</button>
+  <quill-view-html [content]="post.text"></quill-view-html>
+ <button class="btn btn-link" routerLink="/">Go Home</button>
+</div>
+
+<ng-template #loading>
+  <div class="jumbotron text-center">
+    <h3>loading...</h3>
+  </div>
+</ng-template>
