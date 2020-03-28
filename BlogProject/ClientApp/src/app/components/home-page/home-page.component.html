@@ -10,7 +10,7 @@
 </form>
 
 <hr />
-<div class="cards" *ngIf="posts; else loading">
+<div class="cards" *ngIf="posts$ | async as posts; else loading">
   <div class="card" *ngFor="let post of posts">
     <div class="card-header bg-dark text-white">
       <div style="float: left;">
