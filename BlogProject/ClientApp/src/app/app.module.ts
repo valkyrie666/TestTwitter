@@ -19,6 +19,12 @@ import { PostPageComponent } from './components/post-page/post-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './ngrx/reducers/app.reducer';
+import { PostEffects } from './ngrx/effects/post.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -39,7 +45,12 @@ import { RegistrationPageComponent } from './components/registration-page/regist
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot([PostEffects]),
+    StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
+    // environment.production ? StoreDevtoolsModule.instrument() : [],
+    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     AuthGuard,
