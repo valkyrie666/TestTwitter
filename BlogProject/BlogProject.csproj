@@ -43,12 +43,8 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
-    <Compile Remove="ClientApp\src\app\ngrx\**" />
     <Content Remove="$(SpaRoot)**" />
-    <Content Remove="ClientApp\src\app\ngrx\**" />
-    <EmbeddedResource Remove="ClientApp\src\app\ngrx\**" />
     <None Remove="$(SpaRoot)**" />
-    <None Remove="ClientApp\src\app\ngrx\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
@@ -56,12 +52,6 @@
     <None Remove="ClientApp\src\app\components\login-page\login-page.component.ts" />
     <None Remove="ClientApp\src\app\components\profile-page\profile-page.component.ts" />
     <None Remove="ClientApp\src\app\components\registration-page\registration-page.component.ts" />
-    <None Remove="ClientApp\src\app\ngrx\actions\post.actions.ts" />
-    <None Remove="ClientApp\src\app\ngrx\effects\post.effects.ts" />
-    <None Remove="ClientApp\src\app\ngrx\reducers\app.reducer.ts" />
-    <None Remove="ClientApp\src\app\ngrx\reducers\post.reducer.ts" />
-    <None Remove="ClientApp\src\app\ngrx\selectors\post.selector.ts" />
-    <None Remove="ClientApp\src\app\ngrx\states\app.state.ts" />
     <None Remove="ClientApp\src\app\ngrx\states\post.state.ts" />
     <None Remove="ClientApp\src\app\services\user.service.ts" />
     <None Remove="ClientApp\src\app\shared\components\create-button\create-button.component.ts" />
@@ -74,6 +64,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\ngrx\states\post.state.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\user.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\components\create-button\create-button.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\components\login-page\login-page.component.ts" />
